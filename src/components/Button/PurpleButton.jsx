@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SIZES } from './Button.sizes';
 import { ButtonBase } from './ButtonBase';
 
-const PurpleButton = ({ children, variant, size, ...props }) => {
+const PurpleButton = ({ children, variant, ...props }) => {
   let Component;
   if (variant === 'contained') {
     Component = PurpleButtonContained;
@@ -13,13 +12,7 @@ const PurpleButton = ({ children, variant, size, ...props }) => {
     throw new Error(`Incorrect variant for Button ${variant}`);
   }
 
-  const { fontSize, padding } = SIZES[size];
-
-  return (
-    <Component style={{ '--font-size': fontSize, '--padding': padding }} {...props}>
-      {children}
-    </Component>
-  );
+  return <Component {...props}>{children}</Component>;
 };
 
 const PurpleButtonContained = styled(ButtonBase)`

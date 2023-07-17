@@ -9,7 +9,9 @@ const Layout = () => {
     <Wrapper>
       <Sidebar />
       <Header />
-      <Outlet />
+      <div className="content">
+        <Outlet />
+      </div>
     </Wrapper>
   );
 };
@@ -17,10 +19,16 @@ const Layout = () => {
 const Wrapper = styled.div`
   min-height: 100%;
   display: grid;
-  grid-template: 64px 1fr / 312px 1fr;
+  grid-template: auto 1fr / 360px 1fr;
   grid-template-areas:
-    'header header'
+    'sidebar header'
     'sidebar main';
+
+  .content {
+    grid-area: main;
+    padding: 32px;
+    background-color: var(--color-gray-25);
+  }
 `;
 
 export default Layout;

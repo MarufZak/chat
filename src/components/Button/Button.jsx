@@ -25,7 +25,7 @@ const Button = (
       ref={ref}
     >
       {children}
-      <IconRight fontSize={fontSize} fontWeight={500} />
+      {IconRight && <IconRight size={fontSize} fontWeight={500} />}
     </Component>
   );
 };

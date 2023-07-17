@@ -28,7 +28,7 @@ const H5 = styled(BaseHeading)`
 `;
 
 const H6 = styled(BaseHeading)`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
 `;
 
 const Heading = ({ level = 2, children, ...props }) => {
