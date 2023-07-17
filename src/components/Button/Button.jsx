@@ -1,6 +1,5 @@
 import React from 'react';
 import PurpleButton from './PurpleButton';
-import GrayButton from './GrayButton';
 import { SIZES } from './Button.sizes';
 
 const Button = (
@@ -10,8 +9,6 @@ const Button = (
   let Component;
   if (colorScheme === 'purple') {
     Component = PurpleButton;
-  } else if (colorScheme === 'gray') {
-    Component = GrayButton;
   } else {
     throw new Error(`Incorrect colorScheme for Button ${colorScheme}`);
   }

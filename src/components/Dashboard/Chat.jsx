@@ -2,11 +2,13 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Avatar from '../Avatar';
 import Heading from '../Heading';
+import { NavLink } from 'react-router-dom';
 
-const Chat = ({ avatar, name, email, isActive, ...props }) => {
+const Chat = ({ avatar, name, email, isActive, to, ...props }) => {
   return (
     <Wrapper
       {...props}
+      to={to}
       style={{
         '--bg-color': isActive ? 'var(--color-gray-100)' : 'var(--color-white)',
       }}
@@ -20,15 +22,19 @@ const Chat = ({ avatar, name, email, isActive, ...props }) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(NavLink)`
+  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
 
-  background-color: var(--bg-color);
   padding: 12px 16px;
   border-radius: 8px;
+
+  &.active {
+    background-color: var(--bg-color);
+  }
 
   .info-email {
     font-size: 1.4rem;

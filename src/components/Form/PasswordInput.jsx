@@ -23,10 +23,6 @@ const Wrapper = styled.div`
   color: var(--color-gray-500);
 `;
 
-// const StyledInput = styled(StyledInputBase)`
-//   -webkit-text-fill-color: var(--color-gray-500);
-// `;
-
 const EyeIcon = styled.div`
   position: absolute;
   right: 15px;

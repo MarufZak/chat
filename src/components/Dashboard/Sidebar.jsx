@@ -27,6 +27,7 @@ const Sidebar = () => {
         return (
           <Chat
             onClick={() => setActiveChatId(item.id)}
+            to={item.id.toString()}
             isActive={item.id === activeChatId}
             key={item.id}
             avatar={item.avatar}

@@ -69,6 +69,11 @@ const GlobalStyles = createGlobalStyle`
     border: 0;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   #root {
     height: 100%;
   }
