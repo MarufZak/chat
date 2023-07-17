@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SIZES } from './Button.sizes';
+import { ButtonBase } from './ButtonBase';
 
 const PurpleButton = ({ children, variant, size, ...props }) => {
   let Component;
@@ -21,22 +22,7 @@ const PurpleButton = ({ children, variant, size, ...props }) => {
   );
 };
 
-const PurpleButtonBase = styled.button`
-  display: inline-block;
-  font-size: var(--font-size);
-  padding: var(--padding);
-  border-radius: 8px;
-  transition: background 0.4s, color 0.4s;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-`;
-
-const PurpleButtonContained = styled(PurpleButtonBase)`
+const PurpleButtonContained = styled(ButtonBase)`
   color: var(--color-white);
   background-color: var(--color-purple-600);
   outline: 3px solid transparent;
@@ -57,7 +43,7 @@ const PurpleButtonContained = styled(PurpleButtonBase)`
   }
 `;
 
-const PurpleButtonText = styled(PurpleButtonBase)`
+const PurpleButtonText = styled(ButtonBase)`
   background-color: transparent;
   color: var(--color-purple-600);
   outline: 3px solid transparent;

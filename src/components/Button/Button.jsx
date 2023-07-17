@@ -1,9 +1,12 @@
 import React from 'react';
 import PurpleButton from './PurpleButton';
 import GrayButton from './GrayButton';
-import { styled } from 'styled-components';
+import { SIZES } from './Button.sizes';
 
-const Button = ({ iconRight, colorScheme, children, ...props }, ref) => {
+const Button = (
+  { iconRight: IconRight, colorScheme, children, size, ...props },
+  ref
+) => {
   let Component;
   if (colorScheme === 'purple') {
     Component = PurpleButton;
@@ -13,19 +16,19 @@ const Button = ({ iconRight, colorScheme, children, ...props }, ref) => {
     throw new Error(`Incorrect colorScheme for Button ${colorScheme}`);
   }
 
+  const { fontSize, padding } = SIZES[size];
+
   return (
-    <StyledButton as={Component} {...props} ref={ref}>
+    <Component
+      {...props}
+      style={{ '--font-size': fontSize, '--padding': padding }}
+      ref={ref}
+    >
       {children}
-      {iconRight}
-    </StyledButton>
+      <IconRight fontSize={fontSize} fontWeight={500} />
+    </Component>
   );
 };
-
-const StyledButton = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-`;
 
 // ref passed for radix ui asChild prop for.
 export default React.forwardRef(Button);

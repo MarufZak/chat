@@ -6,20 +6,10 @@ import { Download, Upload } from 'react-feather';
 const Header = () => {
   return (
     <Wrapper>
-      <Button
-        iconRight={<Download size={14} />}
-        colorScheme="gray"
-        size="sm"
-        variant="contained"
-      >
+      <Button iconRight={Download} colorScheme="gray" size="sm" variant="contained">
         Import
       </Button>
-      <Button
-        iconRight={<Upload size={14} />}
-        colorScheme="gray"
-        size="sm"
-        variant="contained"
-      >
+      <Button iconRight={Upload} colorScheme="gray" size="sm" variant="contained">
         Export
       </Button>
     </Wrapper>

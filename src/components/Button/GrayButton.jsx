@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SIZES } from './Button.sizes';
+import { ButtonBase } from './ButtonBase';
 
-const GrayButton = ({ children, variant, size, ...props }) => {
+const GrayButton = ({ children, variant, ...props }) => {
   let Component;
   if (variant === 'contained') {
     Component = GrayButtonContained;
@@ -12,31 +12,12 @@ const GrayButton = ({ children, variant, size, ...props }) => {
     throw new Error(`Incorrect variant for Button ${variant}`);
   }
 
-  const { fontSize, padding } = SIZES[size];
-
-  return (
-    <Component style={{ '--font-size': fontSize, '--padding': padding }} {...props}>
-      {children}
-    </Component>
-  );
+  return <Component {...props}>{children}</Component>;
 };
 
-const GrayButtonBase = styled.button`
-  display: inline-block;
-  font-size: var(--font-size);
-  padding: var(--padding);
-  border-radius: 8px;
-  transition: background 0.4s, color 0.4s;
-  font-weight: 500;
-  border: none;
-  cursor: pointer;
+// q: cannot access ButtonBase before initialization, how to fix ?
 
-  &:disabled {
-    cursor: not-allowed;
-  }
-`;
-
-const GrayButtonContained = styled(GrayButtonBase)`
+const GrayButtonContained = styled(ButtonBase)`
   color: var(--color-white);
   background-color: var(--color-gray-600);
   outline: 3px solid transparent;
@@ -57,7 +38,7 @@ const GrayButtonContained = styled(GrayButtonBase)`
   }
 `;
 
-const GrayButtonText = styled(GrayButtonBase)`
+const GrayButtonText = styled(ButtonBase)`
   background-color: transparent;
   color: var(--color-gray-600);
   outline: 3px solid transparent;

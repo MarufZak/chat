@@ -3,11 +3,11 @@ export const SIZES = {
     padding: '8px 12px',
     fontSize: '1.6rem',
   },
-  lg: {
+  md: {
     padding: '12px 20px',
     fontSize: '1.8rem',
   },
-  xxl: {
+  lg: {
     padding: '16px 28px',
     fontSize: '2rem',
   },
