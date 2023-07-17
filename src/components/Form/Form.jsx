@@ -3,8 +3,14 @@ import Submit from './Submit';
 import Input from './Input';
 import { Root } from '@radix-ui/react-form';
 
-const Form = ({ children, ...props }) => {
-  return <Root {...props}>{children}</Root>;
+export const FormContext = React.createContext();
+
+const Form = ({ isLoading, children, ...props }) => {
+  return (
+    <FormContext.Provider value={{ isLoading }}>
+      <Root {...props}>{children}</Root>
+    </FormContext.Provider>
+  );
 };
 
 Form.Input = Input;

@@ -2,15 +2,17 @@ import { Control, Field, Label } from '@radix-ui/react-form';
 import React from 'react';
 import styled from 'styled-components';
 import PasswordInput from './PasswordInput';
+import { FormContext } from './Form';
 
 const Input = ({ type = 'text', name, className, label, ...props }) => {
+  const { isLoading } = React.useContext(FormContext);
   return (
     <Wrapper name={name} className={className}>
       <StyledLabel>{label}</StyledLabel>
       {type === 'password' ? (
-        <PasswordInput {...props} />
+        <PasswordInput isDisabled={isLoading} {...props} />
       ) : (
-        <StyledInput type={type} {...props} />
+        <StyledInput disabled={isLoading} type={type} {...props} />
       )}
     </Wrapper>
   );
@@ -46,6 +48,11 @@ export const StyledInput = styled(Control)`
     :focus {
       box-shadow: var(--shadow-red-xs);
     }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--color-gray-100);
   }
 `;
 

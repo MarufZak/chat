@@ -2,7 +2,6 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Form from '../Form';
 import Heading from '../Heading';
-import Button from '../Button';
 
 function Login() {
   return (
@@ -16,9 +15,7 @@ function Login() {
           placeholder="Enter your password"
           type="password"
         />
-        <Button size="sm" colorScheme="purple" variant="text">
-          Hello
-        </Button>
+        <Form.Submit>Sign in</Form.Submit>
       </Form>
     </Wrapper>
   );
@@ -28,7 +25,7 @@ const Wrapper = styled.div`
   min-height: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20vh;
+  padding-top: 15vh;
   text-align: center;
 
   .form {
