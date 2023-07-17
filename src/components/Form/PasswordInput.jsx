@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useToggle from '@hooks/useToggle';
-import { StyledInput as StyledInputBase } from './Input';
+import { StyledInput } from './Input';
 import { Eye, EyeOff } from 'react-feather';
 
 const Password = ({ isDisabled, ...props }) => {
@@ -23,9 +23,9 @@ const Wrapper = styled.div`
   color: var(--color-gray-500);
 `;
 
-const StyledInput = styled(StyledInputBase)`
-  -webkit-text-fill-color: var(--color-gray-500);
-`;
+// const StyledInput = styled(StyledInputBase)`
+//   -webkit-text-fill-color: var(--color-gray-500);
+// `;
 
 const EyeIcon = styled.div`
   position: absolute;
