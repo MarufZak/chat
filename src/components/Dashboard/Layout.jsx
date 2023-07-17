@@ -17,7 +17,8 @@ const Layout = () => {
 };
 
 const Wrapper = styled.div`
-  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
   display: grid;
   grid-template: auto 1fr / 360px 1fr;
   grid-template-areas:
@@ -28,6 +29,7 @@ const Wrapper = styled.div`
     grid-area: main;
     padding: 32px;
     background-color: var(--color-gray-25);
+    overflow-y: auto;
   }
 `;
 

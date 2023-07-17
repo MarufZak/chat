@@ -7,7 +7,6 @@ import Chat from './Chat';
 
 const Sidebar = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [activeChatId, setActiveChatId] = React.useState(null);
 
   const filteredChats = chats.filter((item) => {
     return item.name.includes(searchQuery);
@@ -26,9 +25,7 @@ const Sidebar = () => {
       {filteredChats.map((item) => {
         return (
           <Chat
-            onClick={() => setActiveChatId(item.id)}
             to={item.id.toString()}
-            isActive={item.id === activeChatId}
             key={item.id}
             avatar={item.avatar}
             name={item.name}

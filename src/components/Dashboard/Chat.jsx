@@ -4,15 +4,9 @@ import Avatar from '../Avatar';
 import Heading from '../Heading';
 import { NavLink } from 'react-router-dom';
 
-const Chat = ({ avatar, name, email, isActive, to, ...props }) => {
+const Chat = ({ avatar, name, email, to, ...props }) => {
   return (
-    <Wrapper
-      {...props}
-      to={to}
-      style={{
-        '--bg-color': isActive ? 'var(--color-gray-100)' : 'var(--color-white)',
-      }}
-    >
+    <Wrapper {...props} to={to}>
       <Avatar width={40} height={40} src={avatar} name={name} />
       <div className="info">
         <Heading level={6}>{name}</Heading>
@@ -23,7 +17,6 @@ const Chat = ({ avatar, name, email, isActive, to, ...props }) => {
 };
 
 const Wrapper = styled(NavLink)`
-  text-decoration: none;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -33,7 +26,7 @@ const Wrapper = styled(NavLink)`
   border-radius: 8px;
 
   &.active {
-    background-color: var(--bg-color);
+    background-color: var(--color-gray-100);
   }
 
   .info-email {
