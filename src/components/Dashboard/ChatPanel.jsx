@@ -4,12 +4,10 @@ import MessageCard from './MessageCard';
 import { formatDate } from './Dashboard.helpers';
 import { DashboardContext } from './Dashboard';
 
-const myId = 100;
-
 const ChatPanel = () => {
   const { id } = useParams();
+  const { user, chats } = React.useContext(DashboardContext);
   const containerRef = React.useRef();
-  const { chats } = React.useContext(DashboardContext);
 
   React.useEffect(() => {
     containerRef.current.scrollIntoView({ block: 'end' });
@@ -22,7 +20,7 @@ const ChatPanel = () => {
         return (
           <MessageCard
             time={formatDate(item.timestamp)}
-            sender={item.user_id === myId ? 'me' : chat.user.name}
+            sender={item.user_id === user.id ? 'me' : chat.user.name}
             message={item.content}
             key={index}
           />

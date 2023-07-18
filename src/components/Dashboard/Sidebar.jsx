@@ -23,11 +23,11 @@ const Sidebar = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {filteredChats?.map((item) => {
+      {filteredChats?.map((item, index) => {
         return (
           <Chat
             to={item.user.id.toString()}
-            key={item.user.id}
+            key={index}
             avatar={item.user.avatar_url}
             name={item.user.name}
             email={item.user.email}
