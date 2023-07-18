@@ -2,14 +2,15 @@ import React from 'react';
 import { styled } from 'styled-components';
 import logoMark from '@assets/logomark.png';
 import SearchInput from './SearchInput';
-import { chats } from './Dashboard.constants';
 import Chat from './Chat';
+import { DashboardContext } from './Dashboard';
 
 const Sidebar = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const { chats } = React.useContext(DashboardContext);
 
-  const filteredChats = chats.filter((item) => {
-    return item.name.includes(searchQuery);
+  const filteredChats = chats.archived?.filter((item) => {
+    return item.user.name.includes(searchQuery);
   });
 
   return (
@@ -22,14 +23,14 @@ const Sidebar = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {filteredChats.map((item) => {
+      {filteredChats?.map((item) => {
         return (
           <Chat
-            to={item.id.toString()}
-            key={item.id}
-            avatar={item.avatar}
-            name={item.name}
-            email={item.email}
+            to={item.user.id.toString()}
+            key={item.user.id}
+            avatar={item.user.avatar_url}
+            name={item.user.name}
+            email={item.user.email}
           />
         );
       })}

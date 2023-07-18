@@ -1,22 +1,29 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import MessageCard from './MessageCard';
+import { formatDate } from './Dashboard.helpers';
+import { DashboardContext } from './Dashboard';
 
-const myId = 10;
+const myId = 100;
 
 const ChatPanel = () => {
   const { id } = useParams();
-  const chats = JSON.parse(localStorage.getItem('chats'));
-  const chat = chats.find((item) => item.id.toString() === id);
+  const containerRef = React.useRef();
+  const { chats } = React.useContext(DashboardContext);
+
+  React.useEffect(() => {
+    containerRef.current.scrollIntoView({ block: 'end' });
+  }, [id]);
+
+  const chat = chats.archived?.find((item) => item.user.id.toString() === id);
   return (
-    <div>
-      {chat.messages.map((item, index) => {
-        console.log(item);
+    <div ref={containerRef}>
+      {chat?.messages.map((item, index) => {
         return (
           <MessageCard
-            time={item.time}
+            time={formatDate(item.timestamp)}
             sender={item.user_id === myId ? 'me' : chat.user.name}
-            message={item.message}
+            message={item.content}
             key={index}
           />
         );
