@@ -1,0 +1,83 @@
+{
+  "active": [],
+  "archived": [
+    {
+      "user": {
+        "id": 5,
+        "name": "Michael Jackson",
+        "avatar_url": "https://exaple.com"
+      },
+      "messages": [
+        {
+          "user_id": 3,
+          "timestamp": "2013-03-15T00:00:00Z",
+          "content": "Hello, nice to meet you Ban!"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2013-04-15T00:00:00Z",
+          "content": "Hi , but my name is not Ban, sorry!"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2003-04-15T00:00:00Z",
+          "content": "Ooh, sorry for that , i didn't know it!"
+        },
+        {
+          "user_id": 3,
+          "timestamp": "2013-03-16T00:00:00Z",
+          "content": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2013-04-15T00:00:00Z",
+          "content": "Richard McClintock, a Latin professor at Hampden-Sydney"
+        },
+        {
+          "user_id": 3,
+          "timestamp": "2003-04-15T00:00:00Z",
+          "content": "from repetition, injected humour, or non-characteristic words etc."
+        }
+      ]
+    },
+    {
+      "user": {
+        "id": 11,
+        "name": "Jack Mitchel",
+        "avatar_url": "https://i.pravatar.cc/150?img=4"
+      },
+      "messages": [
+        {
+          "user_id": 3,
+          "timestamp": "2013-03-15T00:00:00Z",
+          "content": "Hello, nice to meet you Ban!"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2013-04-15T00:00:00Z",
+          "content": "Hi , but my name is not Ban, sorry!"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2004-04-15T00:00:00Z",
+          "content": "Ooh, sorry for that , i didn't know it!"
+        },
+        {
+          "user_id": 3,
+          "timestamp": "2013-03-16T00:00:00Z",
+          "content": "Contrary to popular belief"
+        },
+        {
+          "user_id": 100,
+          "timestamp": "2013-04-15T00:00:00Z",
+          "content": "RICH man"
+        },
+        {
+          "user_id": 3,
+          "timestamp": "2003-04-15T00:00:00Z",
+          "content": "from repetition, injected humour, or non-characteristic words etc."
+        }
+      ]
+    }
+  ]
+}

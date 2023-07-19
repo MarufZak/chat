@@ -7,12 +7,17 @@ import { formatChats } from './Dashboard.helpers';
 export const DashboardContext = React.createContext();
 
 function Dashboard() {
-  const [chats, setChats] = React.useState({});
+  const [chats, setChats] = React.useState({
+    active: [],
+    archived: [],
+  });
   const [user, setUser] = React.useState({ id: 100 });
 
   React.useEffect(() => {
     const newChats = JSON.parse(localStorage.getItem('chats'));
-    setChats(newChats);
+    if (newChats) {
+      setChats(newChats);
+    }
   }, []);
 
   const handleImport = (importedChats) => {

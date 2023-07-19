@@ -1,16 +1,18 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import logoMark from '@assets/logomark.png';
+import useDebounce from '@hooks/useDebounce';
 import SearchInput from './SearchInput';
 import Chat from './Chat';
 import { DashboardContext } from './Dashboard';
 
 const Sidebar = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const debouncedSearchQuery = useDebounce(searchQuery);
   const { chats } = React.useContext(DashboardContext);
 
-  const filteredChats = chats.archived?.filter((item) => {
-    return item.user.name.includes(searchQuery);
+  const filteredChats = chats.archived.filter((item) => {
+    return item.user.name.includes(debouncedSearchQuery);
   });
 
   return (
@@ -23,7 +25,7 @@ const Sidebar = () => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      {filteredChats?.map((item, index) => {
+      {filteredChats.map((item, index) => {
         return (
           <Chat
             to={item.user.id.toString()}

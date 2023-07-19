@@ -5,7 +5,7 @@ import { Search } from 'react-feather';
 
 const SearchInput = (props) => {
   return (
-    <Wrapper>
+    <Wrapper onSubmit={(e) => e.preventDefault()}>
       <Form.Input
         {...props}
         label={<Search size={16} className="search-label" />}

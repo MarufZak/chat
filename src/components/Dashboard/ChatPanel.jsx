@@ -13,7 +13,7 @@ const ChatPanel = () => {
     containerRef.current.scrollIntoView({ block: 'end' });
   }, [id]);
 
-  const chat = chats.archived?.find((item) => item.user.id.toString() === id);
+  const chat = chats.archived.find((item) => item.user.id.toString() === id);
   return (
     <div ref={containerRef}>
       {chat?.messages.map((item, index) => {
