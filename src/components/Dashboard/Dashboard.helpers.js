@@ -8,7 +8,7 @@ export const formatDate = (date) => {
   return formatter.format(new Date(date));
 };
 
-export const formatChats = (chats) => {
+export const removeChatsImportFlag = (chats) => {
   const newChats = {
     ...chats,
     archived: chats.archived.map((item) => {

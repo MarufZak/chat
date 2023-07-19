@@ -2,9 +2,9 @@ import { Image, Root, Fallback } from '@radix-ui/react-avatar';
 import React from 'react';
 import styled from 'styled-components';
 
-function Avatar({ src, width = 32, height = 32, name }) {
+function Avatar({ src, width = 32, height = 32, name, ...props }) {
   return (
-    <Root style={{ '--width': width + 'px', '--height': height + 'px' }}>
+    <Root {...props} style={{ '--width': width + 'px', '--height': height + 'px' }}>
       <StyledAvatarImage src={src} alt={`${name} avatar`} />
       <AvatarFallback>{name?.slice(0, 2)}</AvatarFallback>
     </Root>

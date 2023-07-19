@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ButtonBase } from './ButtonBase';
+import ButtonBase from './ButtonBase';
 
 const PurpleButton = ({ children, variant, ...props }) => {
   let Component;

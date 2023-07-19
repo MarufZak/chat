@@ -13,12 +13,28 @@ const ChatPanel = () => {
     containerRef.current.scrollIntoView({ block: 'end' });
   }, [id]);
 
-  const chat = chats.archived.find((item) => item.user.id.toString() === id);
+  const chat = React.useMemo(() => {
+    let result;
+
+    for (const key in chats) {
+      for (let i = 0; i < chats[key].length; i++) {
+        const chat = chats[key][i];
+        if (chat.user.id.toString() === id) {
+          result = chat;
+          break;
+        }
+      }
+    }
+
+    return result;
+  }, [id, chats]);
+
   return (
     <div ref={containerRef}>
       {chat?.messages.map((item, index) => {
         return (
           <MessageCard
+            avatar={chat.user.avatar_url}
             time={formatDate(item.timestamp)}
             sender={item.user_id === user.id ? 'me' : chat.user.name}
             message={item.content}

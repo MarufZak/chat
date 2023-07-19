@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const ButtonBase = styled.div`
+const ButtonBase = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -17,3 +17,5 @@ export const ButtonBase = styled.div`
     cursor: not-allowed;
   }
 `;
+
+export default ButtonBase;

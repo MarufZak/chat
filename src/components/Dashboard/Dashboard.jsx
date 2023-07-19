@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import ChatPanel from './ChatPanel';
-import { formatChats } from './Dashboard.helpers';
+import { removeChatsImportFlag } from './Dashboard.helpers';
 
 export const DashboardContext = React.createContext();
 
@@ -38,7 +38,7 @@ function Dashboard() {
   };
 
   const handleExport = () => {
-    const data = JSON.stringify(formatChats(chats));
+    const data = JSON.stringify(removeChatsImportFlag(chats));
     const anchorElement = document.createElement('a');
 
     anchorElement.href = `data:application/json;charset=utf-8,${encodeURI(data)}`;
@@ -54,6 +54,7 @@ function Dashboard() {
         return !item.imported;
       }),
     };
+
     setChats(newChats);
   };
 

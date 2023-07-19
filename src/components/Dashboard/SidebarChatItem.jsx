@@ -4,9 +4,9 @@ import Avatar from '../Avatar';
 import Heading from '../Heading';
 import { NavLink } from 'react-router-dom';
 
-const Chat = ({ avatar, name, to, ...props }) => {
+const Chat = ({ avatar, name, id, ...props }) => {
   return (
-    <Wrapper {...props} to={to}>
+    <Wrapper {...props} to={id.toString()}>
       <Avatar width={40} height={40} src={avatar} name={name} />
       <Heading level={6}>{name}</Heading>
     </Wrapper>
