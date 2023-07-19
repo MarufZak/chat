@@ -1,2 +1,2 @@
 TODO:
-make Chat component more accessible
+fix bug in Header with import button, focus state...

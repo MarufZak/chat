@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import ChatPanel from './ChatPanel';
 import { removeChatsImportFlag } from './Dashboard.helpers';
@@ -9,6 +9,7 @@ export const DashboardContext = React.createContext();
 
 function Dashboard() {
   const { user } = React.useContext(AppContext);
+  const navigate = useNavigate();
   const [chats, setChats] = React.useState({
     active: [],
     archived: [],
@@ -56,6 +57,7 @@ function Dashboard() {
       }),
     };
 
+    navigate('/dashboard', { replace: true });
     setChats(newChats);
   };
 

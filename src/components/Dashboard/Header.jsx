@@ -36,10 +36,18 @@ const Header = () => {
         Clear
       </Button>
       <div className="buttons-group">
-        <Button iconRight={Download} colorScheme="purple" size="xs" variant="text">
-          <label htmlFor={importButtonId}>Import</label>
+        <Button
+          className="import-btn"
+          iconRight={Download}
+          colorScheme="purple"
+          size="xs"
+          variant="text"
+        >
+          Import
+          <label className="import-label" htmlFor={importButtonId}></label>
         </Button>
         <input
+          key={Math.random()} // to reset input value
           id={importButtonId}
           onChange={handleImport}
           type="file"
@@ -72,6 +80,16 @@ const Wrapper = styled.header`
   .buttons-group {
     display: flex;
     gap: 16px;
+  }
+
+  .import-btn {
+    position: relative;
+  }
+
+  .import-label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
   }
 `;
 

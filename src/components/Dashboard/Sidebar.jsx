@@ -53,6 +53,8 @@ const Sidebar = () => {
 
 const Wrapper = styled.nav`
   animation: ${fadeOut} 0.3s;
+  overflow-y: auto;
+
   grid-area: sidebar;
   background-color: var(--color-white);
   border-right: 1px solid var(--color-gray-200);

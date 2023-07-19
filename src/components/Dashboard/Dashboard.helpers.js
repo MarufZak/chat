@@ -22,3 +22,15 @@ export const removeChatsImportFlag = (chats) => {
   };
   return newChats;
 };
+
+export const sortMessagesByTime = (messages) => {
+  if (!messages) {
+    return [];
+  }
+
+  const result = messages.sort((a, b) => {
+    return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+  });
+
+  return result;
+};
