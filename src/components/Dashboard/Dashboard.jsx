@@ -1,17 +1,18 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import ChatPanel from './ChatPanel';
 import { removeChatsImportFlag } from './Dashboard.helpers';
+import { AppContext } from '../App';
 
 export const DashboardContext = React.createContext();
 
 function Dashboard() {
+  const { user } = React.useContext(AppContext);
   const [chats, setChats] = React.useState({
     active: [],
     archived: [],
   });
-  const [user, setUser] = React.useState({ id: 100 });
 
   React.useEffect(() => {
     const newChats = JSON.parse(localStorage.getItem('chats'));
@@ -58,9 +59,13 @@ function Dashboard() {
     setChats(newChats);
   };
 
+  if (!user) {
+    return <Navigate to="/login" replace={true} />;
+  }
+
   return (
     <DashboardContext.Provider
-      value={{ user, chats, handleImport, handleClear, handleExport }}
+      value={{ chats, handleImport, handleClear, handleExport }}
     >
       <Routes>
         <Route path="/" element={<Layout />}>

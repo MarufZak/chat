@@ -5,6 +5,7 @@ import useDebounce from '@hooks/useDebounce';
 import SearchInput from './SearchInput';
 import SidebarChatItem from './SidebarChatItem';
 import { DashboardContext } from './Dashboard';
+import { fadeOut } from './Dashboard.animations';
 
 const Sidebar = () => {
   const { chats } = React.useContext(DashboardContext);
@@ -51,6 +52,7 @@ const Sidebar = () => {
 };
 
 const Wrapper = styled.nav`
+  animation: ${fadeOut} 0.3s;
   grid-area: sidebar;
   background-color: var(--color-white);
   border-right: 1px solid var(--color-gray-200);

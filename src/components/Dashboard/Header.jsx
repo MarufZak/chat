@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import Button from '../Button';
 import { Download, Trash2, Upload } from 'react-feather';
 import { DashboardContext } from './Dashboard';
+import { fadeOut } from './Dashboard.animations';
 
 const Header = () => {
   const {
@@ -10,6 +11,7 @@ const Header = () => {
     handleExport,
     handleClear,
   } = React.useContext(DashboardContext);
+  const importButtonId = React.useId();
 
   const handleImport = (e) => {
     const file = e.target.files[0];
@@ -34,12 +36,16 @@ const Header = () => {
         Clear
       </Button>
       <div className="buttons-group">
-        <label>
-          <Button iconRight={Download} colorScheme="purple" size="xs" variant="text">
-            Import
-          </Button>
-          <input onChange={handleImport} type="file" accept=".json" hidden={true} />
-        </label>
+        <Button iconRight={Download} colorScheme="purple" size="xs" variant="text">
+          <label htmlFor={importButtonId}>Import</label>
+        </Button>
+        <input
+          id={importButtonId}
+          onChange={handleImport}
+          type="file"
+          accept=".json"
+          hidden={true}
+        />
         <Button
           onClick={handleExport}
           iconRight={Upload}
@@ -55,6 +61,7 @@ const Header = () => {
 };
 
 const Wrapper = styled.header`
+  animation: ${fadeOut} 0.3s;
   grid-area: header;
   background-color: var(--color-white);
   display: flex;

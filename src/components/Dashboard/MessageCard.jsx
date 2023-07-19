@@ -13,13 +13,7 @@ const MessageCard = ({ sender, time, message, avatar }) => {
   return (
     <Wrapper style={{ '--margin-left': sender === 'me' && 'auto' }}>
       {sender !== 'me' && (
-        <Avatar
-          className="sender-avatar"
-          width={40}
-          height={40}
-          name={sender}
-          src={avatar}
-        />
+        <Avatar className="sender-avatar" size="lg" name={sender} src={avatar} />
       )}
       <div className="message-body">
         <MessageHeader>

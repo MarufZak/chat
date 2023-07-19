@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom';
 import MessageCard from './MessageCard';
 import { formatDate } from './Dashboard.helpers';
 import { DashboardContext } from './Dashboard';
+import { AppContext } from '../App';
 
 const ChatPanel = () => {
   const { id } = useParams();
-  const { user, chats } = React.useContext(DashboardContext);
+  const { user } = React.useContext(AppContext);
+  const { chats } = React.useContext(DashboardContext);
   const containerRef = React.useRef();
 
   React.useEffect(() => {

@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 const Chat = ({ avatar, name, id, ...props }) => {
   return (
     <Wrapper {...props} to={id.toString()}>
-      <Avatar width={40} height={40} src={avatar} name={name} />
+      <Avatar size="lg" src={avatar} name={name} />
       <Heading level={6}>{name}</Heading>
     </Wrapper>
   );
