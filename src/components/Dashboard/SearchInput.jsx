@@ -1,14 +1,18 @@
 import React from 'react';
 import Form from '../Form/Form';
 import { styled } from 'styled-components';
-import { Search } from 'react-feather';
+import Icon from '../Icon';
 
 const SearchInput = (props) => {
   return (
     <Wrapper onSubmit={(e) => e.preventDefault()}>
       <Form.Input
         {...props}
-        label={<Search size={16} className="search-label" />}
+        label={
+          <Icon width="16px" height="16px" className="search-label">
+            search
+          </Icon>
+        }
         className="search-input"
         placeholder="Search"
       />

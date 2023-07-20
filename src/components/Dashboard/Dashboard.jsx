@@ -28,8 +28,8 @@ function Dashboard() {
       archived: chats.archived.filter((item) => !item.imported),
     };
 
-    for (let i = 0; i < importedChats.archived.length; i++) {
-      const chat = importedChats.archived[i];
+    for (let i = 0; i < importedChats.length; i++) {
+      const chat = importedChats[i];
       newChats.archived.push({
         ...chat,
         imported: true,

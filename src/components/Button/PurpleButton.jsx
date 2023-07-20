@@ -37,7 +37,7 @@ const PurpleButtonContained = styled(ButtonBase)`
 `;
 
 const PurpleButtonText = styled(ButtonBase)`
-  background-color: transparent;
+  background-color: var(--color-purple-50);
   color: var(--color-purple-600);
   outline: 3px solid transparent;
 

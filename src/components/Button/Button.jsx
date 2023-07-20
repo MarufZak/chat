@@ -1,11 +1,9 @@
 import React from 'react';
 import PurpleButton from './PurpleButton';
 import { SIZES } from './Button.sizes';
+import Icon from '../Icon';
 
-const Button = (
-  { iconRight: IconRight, colorScheme, children, size, ...props },
-  ref
-) => {
+const Button = ({ iconRight, colorScheme, children, size, ...props }, ref) => {
   let Component;
   if (colorScheme === 'purple') {
     Component = PurpleButton;
@@ -22,7 +20,11 @@ const Button = (
       ref={ref}
     >
       {children}
-      {IconRight && <IconRight size={fontSize} fontWeight={500} />}
+      {iconRight && (
+        <Icon width={fontSize} height={fontSize}>
+          {iconRight}
+        </Icon>
+      )}
     </Component>
   );
 };

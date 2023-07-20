@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import useToggle from '@hooks/useToggle';
 import { StyledInput } from './Input';
-import { Eye, EyeOff } from 'react-feather';
+import Icon from '../Icon/Icon';
 
 const Password = ({ isDisabled, ...props }) => {
   const [isHidden, toggleHidden] = useToggle(true);
@@ -13,7 +13,9 @@ const Password = ({ isDisabled, ...props }) => {
         type={isHidden ? 'password' : 'text'}
         {...props}
       />
-      <EyeIcon as={isHidden ? Eye : EyeOff} onClick={toggleHidden} size={14} />
+      <StyledIcon width="14px" height="14px" onClick={toggleHidden}>
+        {isHidden ? 'eye' : 'eye-off'}
+      </StyledIcon>
     </Wrapper>
   );
 };
@@ -23,7 +25,7 @@ const Wrapper = styled.div`
   color: var(--color-gray-500);
 `;
 
-const EyeIcon = styled.div`
+const StyledIcon = styled(Icon)`
   position: absolute;
   right: 15px;
   bottom: 50%;

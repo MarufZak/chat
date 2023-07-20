@@ -3,8 +3,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Button from '../Button';
 import { FormContext } from './Form';
-import { Loader } from 'react-feather';
-import { spin } from './Form.animations';
+import Spinner from '../Spinner';
 
 const Submit = ({ children, ...props }) => {
   const { isLoading } = React.useContext(FormContext);
@@ -17,11 +16,7 @@ const Submit = ({ children, ...props }) => {
         size="sm"
       >
         {isLoading ? (
-          <StyledLoader
-            className="spinner"
-            size={16}
-            color="var(--color-purple-600)"
-          />
+          <Spinner size="sm" color="var(--color-purple-500)" />
         ) : (
           children
         )}
@@ -35,10 +30,6 @@ const StyledButton = styled(Button)`
   margin-top: 24px;
   display: flex;
   justify-content: center;
-`;
-
-const StyledLoader = styled(Loader)`
-  animation: ${spin} 1s linear infinite;
 `;
 
 export default Submit;

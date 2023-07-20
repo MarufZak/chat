@@ -1,12 +1,12 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import Button from '../Button';
-import { Download, Trash2, Upload } from 'react-feather';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
 
 const Header = () => {
   const {
+    chats,
     handleImport: handleImportChats,
     handleExport,
     handleClear,
@@ -24,21 +24,25 @@ const Header = () => {
     fileReader.readAsText(file);
   };
 
+  const isChatsEmpty = chats.active.length === 0 && chats.archived.length === 0;
+  const isArchivedChatsEmpty = chats.archived.length === 0;
+
   return (
     <Wrapper>
       <Button
         onClick={handleClear}
-        iconRight={Trash2}
+        iconRight="trash"
         colorScheme="purple"
         size="xs"
         variant="contained"
+        disabled={isArchivedChatsEmpty}
       >
         Clear
       </Button>
       <div className="buttons-group">
         <Button
           className="import-btn"
-          iconRight={Download}
+          iconRight="download"
           colorScheme="purple"
           size="xs"
           variant="text"
@@ -56,10 +60,11 @@ const Header = () => {
         />
         <Button
           onClick={handleExport}
-          iconRight={Upload}
+          iconRight="upload"
           colorScheme="purple"
           size="xs"
           variant="contained"
+          disabled={isChatsEmpty}
         >
           Export
         </Button>
