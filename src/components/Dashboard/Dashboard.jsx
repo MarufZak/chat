@@ -36,6 +36,7 @@ function Dashboard() {
       });
     }
 
+    navigate('/dashboard', { replace: true });
     setChats(newChats);
   };
 

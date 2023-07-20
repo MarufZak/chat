@@ -14,6 +14,13 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'react/prop-types': 'off',
-    'unused-imports/no-unused-imports': '',
   },
+  overrides: [
+    {
+      files: ['**/*.+(js|jsx)'],
+      rules: {
+        'no-unused-vars': ['error', { varsIgnorePattern: '^React$' }],
+      },
+    },
+  ],
 };

@@ -11,10 +11,6 @@ const ChatPanel = () => {
   const { chats } = React.useContext(DashboardContext);
   const containerRef = React.useRef();
 
-  React.useEffect(() => {
-    containerRef.current.scrollIntoView({ block: 'end' });
-  }, [id]);
-
   const chat = React.useMemo(() => {
     let result;
 
@@ -34,7 +30,11 @@ const ChatPanel = () => {
         messages: sortMessagesByTime(result?.messages),
       };
     }
-  }, [id, chats]);
+  }, [chats, id]);
+
+  React.useEffect(() => {
+    containerRef.current.scrollIntoView({ block: 'end' });
+  }, [id]);
 
   return (
     <div ref={containerRef}>
