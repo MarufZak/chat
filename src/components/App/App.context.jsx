@@ -1,16 +1,16 @@
 import React from 'react';
+import { getFromLocalStorage, setToLocalStorage } from '@utils/helpers';
 
 export const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [user, setUser] = React.useState(() => {
-    const existingUser = localStorage.getItem('user');
-    return existingUser ? JSON.parse(existingUser) : null;
+    return getFromLocalStorage('user');
   });
 
   const handleLogin = (user) => {
     setUser(user);
-    localStorage.setItem('user', JSON.stringify(user));
+    setToLocalStorage('user', user);
   };
 
   const handleLogout = () => {

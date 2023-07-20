@@ -6,6 +6,7 @@ import SearchInput from './SearchInput';
 import SidebarChatItem from './SidebarChatItem';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
+import notFoundImg from '@assets/not-found.png';
 
 const Sidebar = () => {
   const { chats } = React.useContext(DashboardContext);
@@ -27,31 +28,42 @@ const Sidebar = () => {
     return result;
   }, [chats, debouncedSearchQuery]);
 
+  const isChatsEmpty = chats.archived.length === 0 && chats.active.length === 0;
+  const isFilteredChatsEmpty = filteredChats.length === 0;
   return (
     <Wrapper>
       <div className="logo">
         <img className="logo-mark" src={logoMark} alt="logo mark" />
         Best Chat
       </div>
-      <SearchInput
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      {filteredChats.map((item, index) => {
-        return (
-          <SidebarChatItem
-            id={item.user.id}
-            key={index}
-            avatar={item.user.avatar_url}
-            name={item.user.name}
+      <ChatsSection>
+        {isChatsEmpty === false && (
+          <SearchInput
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-        );
-      })}
+        )}
+        {(isChatsEmpty || isFilteredChatsEmpty) && (
+          <NotFoundImg src={notFoundImg} alt="clouds with search icon" />
+        )}
+        {filteredChats.map((item, index) => {
+          return (
+            <SidebarChatItem
+              id={item.user.id}
+              key={index}
+              avatar={item.user.avatar_url}
+              name={item.user.name}
+            />
+          );
+        })}
+      </ChatsSection>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.nav`
+  display: flex;
+  flex-direction: column;
   animation: ${fadeOut} 0.3s;
   overflow-y: auto;
 
@@ -73,6 +85,18 @@ const Wrapper = styled.nav`
     width: 42px;
     height: 42px;
   }
+`;
+
+const ChatsSection = styled.div`
+  flex-grow: 1;
+  position: relative;
+`;
+
+const NotFoundImg = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 `;
 
 export default Sidebar;

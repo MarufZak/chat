@@ -4,6 +4,7 @@ import Layout from './Layout';
 import ChatPanel from './ChatPanel';
 import { removeChatsImportFlag } from './Dashboard.helpers';
 import { AppContext } from '../App';
+import { getFromLocalStorage } from '@utils/helpers';
 
 export const DashboardContext = React.createContext();
 
@@ -16,7 +17,7 @@ function Dashboard() {
   });
 
   React.useEffect(() => {
-    const newChats = JSON.parse(localStorage.getItem('chats'));
+    const newChats = getFromLocalStorage('chats');
     if (newChats) {
       setChats(newChats);
     }
