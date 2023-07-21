@@ -60,6 +60,7 @@ function Dashboard() {
     };
 
     navigate('/dashboard', { replace: true });
+    console.log(newChats);
     setChats(newChats);
   };
 

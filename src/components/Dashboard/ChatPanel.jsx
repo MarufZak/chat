@@ -1,15 +1,19 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MessageCard from './MessageCard';
 import { formatDate, sortMessagesByTime } from './Dashboard.helpers';
 import { DashboardContext } from './Dashboard';
 import { AppContext } from '../App';
+import useKeyDown from '../../hooks/useKeyDown';
 
 const ChatPanel = () => {
   const { id } = useParams();
   const { user } = React.useContext(AppContext);
   const { chats } = React.useContext(DashboardContext);
   const containerRef = React.useRef();
+  const navigate = useNavigate();
+
+  const isEscapePressed = useKeyDown('Escape');
 
   const chat = React.useMemo(() => {
     let result;
@@ -35,6 +39,12 @@ const ChatPanel = () => {
   React.useEffect(() => {
     containerRef.current.scrollIntoView({ block: 'end' });
   }, [id]);
+
+  React.useEffect(() => {
+    if (isEscapePressed) {
+      navigate('/dashboard');
+    }
+  }, [navigate, isEscapePressed]);
 
   return (
     <div ref={containerRef}>

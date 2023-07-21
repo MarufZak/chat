@@ -13,9 +13,11 @@ const Password = ({ isDisabled, ...props }) => {
         type={isHidden ? 'password' : 'text'}
         {...props}
       />
-      <StyledIcon width="14px" height="14px" onClick={toggleHidden}>
-        {isHidden ? 'eye' : 'eye-off'}
-      </StyledIcon>
+      <StyledEyeButton>
+        <Icon width="14px" height="14px" onClick={toggleHidden}>
+          {isHidden ? 'eye' : 'eye-off'}
+        </Icon>
+      </StyledEyeButton>
     </Wrapper>
   );
 };
@@ -25,7 +27,7 @@ const Wrapper = styled.div`
   color: var(--color-gray-500);
 `;
 
-const StyledIcon = styled(Icon)`
+const StyledEyeButton = styled.button`
   position: absolute;
   right: 15px;
   bottom: 50%;

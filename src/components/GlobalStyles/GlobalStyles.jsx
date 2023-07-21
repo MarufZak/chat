@@ -74,6 +74,11 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  button {
+    background: none;
+    border: none;
+  }
+
   #root {
     height: 100%;
   }
