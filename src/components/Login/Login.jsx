@@ -5,6 +5,7 @@ import Heading from '../Heading';
 import { fadeOut } from './Login.animations';
 import { AppContext } from '../App';
 import { useNavigate } from 'react-router-dom';
+import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 function Login() {
   const { handleLogin } = React.useContext(AppContext);
@@ -61,4 +62,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Login;
+export default withErrorBoundary(Login);

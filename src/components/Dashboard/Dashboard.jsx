@@ -5,6 +5,7 @@ import ChatPanel from './ChatPanel';
 import { removeChatsImportFlag } from './Dashboard.helpers';
 import { AppContext } from '../App';
 import { getFromLocalStorage } from '@utils/helpers';
+import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 export const DashboardContext = React.createContext();
 
@@ -60,7 +61,6 @@ function Dashboard() {
     };
 
     navigate('/dashboard', { replace: true });
-    console.log(newChats);
     setChats(newChats);
   };
 
@@ -81,4 +81,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default withErrorBoundary(Dashboard);

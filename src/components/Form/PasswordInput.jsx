@@ -13,7 +13,7 @@ const Password = ({ isDisabled, ...props }) => {
         type={isHidden ? 'password' : 'text'}
         {...props}
       />
-      <StyledEyeButton>
+      <StyledEyeButton type="button">
         <Icon width="14px" height="14px" onClick={toggleHidden}>
           {isHidden ? 'eye' : 'eye-off'}
         </Icon>

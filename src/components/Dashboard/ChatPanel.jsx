@@ -5,6 +5,7 @@ import { formatDate, sortMessagesByTime } from './Dashboard.helpers';
 import { DashboardContext } from './Dashboard';
 import { AppContext } from '../App';
 import useKeyDown from '../../hooks/useKeyDown';
+import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 const ChatPanel = () => {
   const { id } = useParams();
@@ -73,4 +74,6 @@ const ChatPanel = () => {
   );
 };
 
-export default ChatPanel;
+export default withErrorBoundary(ChatPanel, {
+  gridArea: 'main',
+});

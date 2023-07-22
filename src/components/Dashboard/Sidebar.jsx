@@ -7,13 +7,14 @@ import SidebarChatItem from './SidebarChatItem';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
 import notFoundImg from '@assets/not-found.png';
+import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 const Sidebar = () => {
   const { chats } = React.useContext(DashboardContext);
   const [searchQuery, setSearchQuery] = React.useState('');
   const debouncedSearchQuery = useDebounce(searchQuery);
 
-  const filteredChats = React.useMemo(() => {
+  const filteredChats = React.useMesmo(() => {
     let result = [];
 
     for (const key in chats) {
@@ -99,4 +100,6 @@ const NotFoundImg = styled.img`
   translate: -50% -50%;
 `;
 
-export default Sidebar;
+export default withErrorBoundary(Sidebar, {
+  gridArea: 'sidebar',
+});

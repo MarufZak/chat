@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 import Button from '../Button';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
+import withErrorBoundary from '../../hoc/withErrorBoundary';
 
 const Header = () => {
   const {
@@ -98,4 +99,6 @@ const Wrapper = styled.header`
   }
 `;
 
-export default Header;
+export default withErrorBoundary(Header, {
+  gridArea: 'header',
+});
