@@ -14,7 +14,7 @@ const Sidebar = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const debouncedSearchQuery = useDebounce(searchQuery);
 
-  const filteredChats = React.useMesmo(() => {
+  const filteredChats = React.useMemo(() => {
     let result = [];
 
     for (const key in chats) {
