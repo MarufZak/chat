@@ -5,7 +5,7 @@ import Heading from '../Heading';
 import { fadeOut } from './Login.animations';
 import { AppContext } from '../App';
 import { useNavigate } from 'react-router-dom';
-import withErrorBoundary from '../../hoc/withErrorBoundary';
+import withErrorBoundary from '@hoc/withErrorBoundary';
 
 function Login() {
   const { handleLogin } = React.useContext(AppContext);

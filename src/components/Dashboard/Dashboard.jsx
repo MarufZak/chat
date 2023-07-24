@@ -6,7 +6,7 @@ import { removeChatsImportFlag } from './Dashboard.helpers';
 import { exportFile } from '@utils/fileHelpers';
 import { AppContext } from '../App';
 import { getFromLocalStorage } from '@utils/helpers';
-import withErrorBoundary from '../../hoc/withErrorBoundary';
+import withErrorBoundary from '@hoc/withErrorBoundary';
 
 export const DashboardContext = React.createContext();
 

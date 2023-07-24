@@ -1,18 +1,20 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import logoMark from '@assets/logomark.png';
 import useDebounce from '@hooks/useDebounce';
+import useWindowSize from '@hooks/useWindowSize';
 import SearchInput from './SearchInput';
 import SidebarChatItem from './SidebarChatItem';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
 import notFoundImg from '@assets/not-found.png';
-import withErrorBoundary from '../../hoc/withErrorBoundary';
+import withErrorBoundary from '@hoc/withErrorBoundary';
+import Logo from '../Logo/Logo';
 
 const Sidebar = () => {
   const { chats } = React.useContext(DashboardContext);
   const [searchQuery, setSearchQuery] = React.useState('');
   const debouncedSearchQuery = useDebounce(searchQuery);
+  const { width: windowWidth } = useWindowSize();
 
   const filteredChats = React.useMemo(() => {
     let result = [];
@@ -31,12 +33,10 @@ const Sidebar = () => {
 
   const isChatsEmpty = chats.archived.length === 0 && chats.active.length === 0;
   const isFilteredChatsEmpty = filteredChats.length === 0;
+
   return (
     <Wrapper>
-      <div className="logo">
-        <img className="logo-mark" src={logoMark} alt="logo mark" />
-        Best Chat
-      </div>
+      {windowWidth > 768 && <Logo />}
       <ChatsSection>
         {isChatsEmpty === false && (
           <SearchInput
@@ -72,20 +72,6 @@ const Wrapper = styled.nav`
   background-color: var(--color-white);
   border-right: 1px solid var(--color-gray-200);
   padding: 18px 24px;
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-    font-size: 2.4rem;
-    color: var(--color-gray-900);
-  }
-
-  .logo-mark {
-    width: 42px;
-    height: 42px;
-  }
 `;
 
 const ChatsSection = styled.div`
