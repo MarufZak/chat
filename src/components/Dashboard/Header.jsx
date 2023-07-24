@@ -4,6 +4,7 @@ import Button from '../Button';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
 import withErrorBoundary from '../../hoc/withErrorBoundary';
+import { getFileFromFilePicker, readFileAsText } from './Dashboard.helpers';
 
 const Header = () => {
   const {
@@ -12,17 +13,12 @@ const Header = () => {
     handleExport,
     handleClear,
   } = React.useContext(DashboardContext);
-  const importButtonId = React.useId();
 
-  const handleImport = (e) => {
-    const file = e.target.files[0];
+  const handleImport = async () => {
+    const file = await getFileFromFilePicker();
+    const chats = await readFileAsText(file);
 
-    const fileReader = new FileReader();
-    fileReader.addEventListener('load', (e) => {
-      const result = JSON.parse(e.target.result);
-      handleImportChats(result);
-    });
-    fileReader.readAsText(file);
+    handleImportChats(chats);
   };
 
   const isChatsEmpty = chats.active.length === 0 && chats.archived.length === 0;
@@ -42,6 +38,7 @@ const Header = () => {
       </Button>
       <div className="buttons-group">
         <Button
+          onClick={handleImport}
           className="import-btn"
           iconRight="download"
           colorScheme="purple"
@@ -49,16 +46,7 @@ const Header = () => {
           variant="text"
         >
           Import
-          <label className="import-label" htmlFor={importButtonId}></label>
         </Button>
-        <input
-          key={Math.random()} // to reset input value
-          id={importButtonId}
-          onChange={handleImport}
-          type="file"
-          accept=".json"
-          hidden={true}
-        />
         <Button
           onClick={handleExport}
           iconRight="upload"
