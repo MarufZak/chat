@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import MessageCard from './MessageCard';
-import { formatDate, sortMessagesByTime } from './Dashboard.helpers';
+import { sortMessagesByTime } from './Dashboard.helpers';
+import { formatDate } from '@utils/helpers';
 import { DashboardContext } from './Dashboard';
 import { AppContext } from '../App';
-import useKeyDown from '../../hooks/useKeyDown';
-import withErrorBoundary from '../../hoc/withErrorBoundary';
+import useKeyDown from '@hooks/useKeyDown';
+import withErrorBoundary from '@hoc/withErrorBoundary';
+import { styled } from 'styled-components';
+import { fadeOut } from './Dashboard.animations';
 
 const ChatPanel = () => {
   const { id } = useParams();
@@ -48,17 +51,15 @@ const ChatPanel = () => {
   }, [navigate, isEscapePressed]);
 
   return (
-    <div ref={containerRef}>
+    <Wrapper key={id} ref={containerRef}>
       {chat?.messages.map((item, index) => {
-        let sender;
+        let sender = 'Admin';
         let avatar;
         if (item.user_id === user.id) {
           sender = 'me';
         } else if (item.user_id === chat.user.id) {
           sender = chat.user.name;
           avatar = chat.user.avatar_url;
-        } else {
-          sender = 'Admin';
         }
         return (
           <MessageCard
@@ -70,9 +71,13 @@ const ChatPanel = () => {
           />
         );
       })}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  animation: ${fadeOut} 0.2s;
+`;
 
 export default withErrorBoundary(ChatPanel, {
   gridArea: 'main',

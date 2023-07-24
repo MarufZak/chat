@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import Layout from './Layout';
 import ChatPanel from './ChatPanel';
 import { removeChatsImportFlag } from './Dashboard.helpers';
+import { exportFile } from '@utils/fileHelpers';
 import { AppContext } from '../App';
 import { getFromLocalStorage } from '@utils/helpers';
 import withErrorBoundary from '../../hoc/withErrorBoundary';
@@ -43,13 +44,8 @@ function Dashboard() {
   };
 
   const handleExport = () => {
-    const data = JSON.stringify(removeChatsImportFlag(chats));
-    const anchorElement = document.createElement('a');
-
-    anchorElement.href = `data:application/json;charset=utf-8,${encodeURI(data)}`;
-    anchorElement.download = `user-${user.id}-chats.json`;
-    anchorElement.click();
-    anchorElement.remove();
+    const data = removeChatsImportFlag(chats);
+    exportFile(data);
   };
 
   const handleClear = () => {

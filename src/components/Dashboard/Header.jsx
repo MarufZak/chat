@@ -4,7 +4,7 @@ import Button from '../Button';
 import { DashboardContext } from './Dashboard';
 import { fadeOut } from './Dashboard.animations';
 import withErrorBoundary from '../../hoc/withErrorBoundary';
-import { getFileFromFilePicker, readFileAsText } from './Dashboard.helpers';
+import { getFileFromFilePicker, readFileAsText } from '@utils/fileHelpers';
 
 const Header = () => {
   const {
@@ -39,7 +39,6 @@ const Header = () => {
       <div className="buttons-group">
         <Button
           onClick={handleImport}
-          className="import-btn"
           iconRight="download"
           colorScheme="purple"
           size="xs"
@@ -74,16 +73,6 @@ const Wrapper = styled.header`
   .buttons-group {
     display: flex;
     gap: 16px;
-  }
-
-  .import-btn {
-    position: relative;
-  }
-
-  .import-label {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
   }
 `;
 

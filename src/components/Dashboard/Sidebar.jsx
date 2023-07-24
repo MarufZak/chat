@@ -94,6 +94,7 @@ const ChatsSection = styled.div`
 `;
 
 const NotFoundImg = styled.img`
+  pointer-events: none;
   position: absolute;
   top: 50%;
   left: 50%;
